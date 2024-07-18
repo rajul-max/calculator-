@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>
+			Caluculator
+		</title>
+		
+		<style>
+			*{
+				margin:0;
+				padding:0;
+			}
+			
+			.main-body{
+				width: 100%;
+				height: 480px;
+				margin: 30px auto;
+				border-radius: 10px;
+				background-color: rgb(214, 214, 214);
+				box-shadow: 5px 5px 10px #b6a9a9,
+				-5px -5px 10px #ffffff;
+			}
+			
+			.ab{
+				width: 90%;
+				margin: 25px auto;
+				border: none;
+				outline: none;
+				color: black;
+				text-align: right;
+				font-size: 30px;
+				padding: 15px;
+				margin: 30px 0 20px 0;
+				background: transparent;
+				box-shadow: inset 2px 2px 5px #babecc,
+				inset -5px -5px 10px #ffffff;
+			}
+			.num{
+				margin: 15px 0 0 5px;
+				width: 52px;
+				height: 52px;
+				border: none;
+				outline: none;
+				font-size: 18px;
+				font-weight: bold;
+				border-radius: 8px;
+				background-color: rgb(214, 214, 214);
+				box-shadow: 5px 5px 10px #b6acac,
+				-5px -5px 10px #faf4f4;
+			}
+			.num:active {				
+				box-shadow: inset 1px 1px 2px #babecc,
+				inset -5px -5px 10px #ffffff;
+			}
+			.num1{
+				margin: 15px 0 0 5px;
+				width: 52px;
+				height: 52px;
+				border: none;
+				outline: none;
+				font-size: 18px;
+				font-weight: bold;
+				border-radius: 8px;
+				background-color: rgb(214, 214, 214);
+				box-shadow: 5px 5px 10px #b6acac,
+				-5px -5px 10px #faf4f4;
+			}
+			.num1:active {				
+				box-shadow: inset 1px 1px 2px #babecc,
+				inset -1px -1px 2px #fff;
+			}
+
+		</style>
+	</head>
+
+	<body>
+		<center>
+			<div class="main-body">
+				<input type="text" class="ab" id="demo"><br>
+				<input class = "num" type = "button" value = "C" onclick = "document.getElementById('demo').value = ' ' " >
+				<button onclick="abc(this)" class ="num1"value ="%"id="%">%</button>
+				<button onclick="abc(this)" class ="num1"value ="B"id="B">B</button>
+				<button onclick="abc(this)"class ="num1" value ="/"id="/">/</button><br>
+				<button onclick="abc(this)"class ="num1" value ="7"id="7">7</button>
+				<button onclick="abc(this)"class ="num1" value ="8"id="8">8</button>
+				<button onclick="abc(this)"class ="num1" value ="9"id="9">9</button>
+				<button onclick="abc(this)" class ="num1"value ="*"id="*">*</button><br>
+				<button onclick="abc(this)" class ="num1"value ="4"id="4">4</button>
+				<button onclick="abc(this)"class ="num1" value ="5"id="5">5</button>
+				<button onclick="abc(this)"class ="num1" value ="6"id="6">6</button>
+				<button onclick="abc(this)"class ="num1" value ="-"id="-">-</button><br>
+				<button onclick="abc(this)"class ="num1" value ="1"id="1">1</button>
+				<button onclick="abc(this)"class ="num1" value ="2"id="2">2</button>
+				<button onclick="abc(this)" class ="num1"value ="3"id="3">3</button>
+				<button onclick="abc(this)"class ="num1" value ="+"id="+">+</button><br>
+				<button onclick="abc(this)"class ="num1" value ="00"id="00">00</button>
+				<button onclick="abc(this)"class ="num1" value ="0"id="0">0</button>
+				<button onclick="abc(this)"class ="num1" value ="."id=".">.</button>
+				<input type="button"class ="num1"value= "="onclick="calculate()">
+			</div>
+		</center>
+		<script>
+			function abc(num) {
+					var a = num.id;
+					var m = document.getElementById(a).value ;
+					document.getElementById("demo").value += m ;
+			}
+			function calculate() {
+				var value = document.getElementById("demo").value;
+				var equal = value.split(/([*\-+/])/);
+				  
+					if (equal.length === 3){
+					var num1 = parseInt(equal[0]);
+					var currentOperator = (equal[1]);  
+					var num2 = parseInt(equal[2]);
+					var result;
+					if (currentOperator === '+') {
+						result = num1 + num2;
+					}
+					else if (currentOperator === '-') {
+						result = num1 - num2;
+					}
+					else if (currentOperator === '*') {
+						result = num1 * num2;
+					}
+					else if (currentOperator === '/') {
+						result = num1 / num2;		
+					}
+					document.getElementById("demo").value = result;
+				}
+			}
+			</script>
+	</body>
